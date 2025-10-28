@@ -65,10 +65,11 @@
       <h2>Media Gallery</h2>
       <div class="gallery">
         <img src="images/icarus_build.jpg" alt="Icarus drone build" />
-        <img src="images/icarus_flight.jpg" alt="Icarus drone flight test" />
+        <figcaption>Current Hardware State</figcaption>
         <video controls>
           <source src="videos/icarus_test.mp4" type="video/mp4" />
           Your browser does not support the video tag.
+          <figcaption>Successful Motor Test</figcaption>
         </video>
       </div>
     </section>
@@ -76,18 +77,23 @@
     <section>
       <h2>Current Progress</h2>
       <p>
-        Currently tuning the quadcopter’s PID controllers for stable hover and attitude control. 
-        Working on integrating onboard sensors for real-time state estimation with Kalman filtering, 
-        and building autonomy scripts in MAVSDK for multi-stage flight sequences such as takeoff, waypoint navigation, and landing.
+        Currently working on finding a new functional Flight Controller to pair with the Raspberry Pi 4B. The previous flight controller had issues with its RAM chip,
+        not storing parameters for flight correctly on power cycle. 
       </p>
     </section>
 
     <section>
+      <h2>Upcoming Goals</h2>
+      <p>
+        Integrate Raspberry Pi with Flight Controller. Fly first manual radio test flight to confirm hardware and assembly.
+      </p>
+      
+    <section>
       <h2>Technical Details</h2>
       <ul>
-        <li><strong>Flight Controller:</strong> Pixhawk running PX4 firmware</li>
-        <li><strong>Programming:</strong> MAVSDK (Python/C++), PID and Kalman filter implementation</li>
-        <li><strong>Hardware:</strong> Custom frame, ESCs, telemetry radio, LiPo battery, onboard sensors</li>
+        <li><strong>Flight Controller(Previous):</strong> Pixhawk running PX4 firmware</li>
+        <li><strong>Programming:</strong> MAVSDK (Python/C++), PID and Kalman filter implementation coming soon</li>
+        <li><strong>Hardware:</strong> Custom frame, 35A individual ESCs, FS-IA6B/FlySky FS-i6 radio, 2300mAh 4S 75C LiPo battery, onboard sensors</li>
       </ul>
     </section>
   </main>
