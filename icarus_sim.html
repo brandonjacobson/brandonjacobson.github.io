@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Icarus Flight Simulations | Brandon Jacobson</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      color: #0a192f;
+    }
+    .project-title {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 2rem;
+      color: #0a192f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brandon Jacobson</h1>
+    <p>Aerospace Engineering | Computer Science | Mathematics @ University of Florida</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="Resume.pdf" target="_blank">Resume</a>
+      <a href="https://github.com/brandonjacobson" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/b-jacobson" target="_blank">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="project-title">Project Icarus Flight Simulations</h1>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        This project focuses on simulating the flight dynamics and control algorithms of Project Icarus.
+        Current focus on Python Simulations and integrating simple controls to smooth flight profile.
+      </p>
+    </section>
+
+    <section>
+      <h2>Simulation Gallery</h2>
+      <div class="gallery">
+        <figure class="media-card">
+          <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Hover Simulation" />
+          <figcaption>Autonomous hover test in Python.</figcaption>
+        </figure>
+        <!--
+        <figure class="media-card">
+          <img src="images/sim_waypoints.jpg" alt="Waypoint Navigation" />
+          <figcaption>Multi-waypoint navigation simulation with MAVSDK scripts.</figcaption>
+        </figure>
+
+        <figure class="media-card">
+          <video controls>
+            <source src="videos/sim_flight.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Full simulated flight demonstrating takeoff, navigation, and landing.</figcaption>
+        </figure>
+        -->
+      </div>
+    </section>
+
+    <section>
+      <h2>Current Progress</h2>
+      <p>
+        Python simulation was successful of a simple three phase flight. The next step will be adding PID to go from ground -> 10m -> soft landing.
+      </p>
+    </section>
+
+    <section>
+      <h2>Upcoming Goals</h2>
+      <ul>
+        <li>Implement working PID control algorithm to smooth flight acceleration and accurately reach targets.</li>
+        <li>Test simple three-phase flight on Icarus platform.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Technical Details</h2>
+      <ul>
+        <li><strong>Simulation Software:</strong> Python</li>
+        <li><strong>Programming:</strong> Python for autonomous flight scripts and PID tuning</li>
+        <li><strong>Focus Areas:</strong> Dynamics modeling, state estimation, autonomous control testing</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Brandon Jacobson</p>
+    <p>Contact Me: brandonjacobson0@gmail.com</p>
+  </footer>
+</body>
+</html>
