@@ -45,10 +45,18 @@ footer {
 /* Gallery grid */
 .gallery {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  justify-items: center;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 380px); /* card width */
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
 }
+.media-card { scroll-snap-align: start; }
+
+/* optional: subtle scrollbar */
+.gallery::-webkit-scrollbar { height: 8px; }
+.gallery::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
 
 /* Card wrapper */
 .media-card {
@@ -96,12 +104,3 @@ footer {
   line-height: 1.4;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-  .media-card {
-    max-width: 100%;
-  }
-}
