@@ -7,19 +7,73 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     main {
-      max-width: 900px;
+      max-width: 1040px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
+
     h2 {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       color: #0a192f;
     }
+
     .project-title {
       text-align: center;
       margin-top: 1rem;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #0a192f;
+    }
+
+    .project-subtitle {
+      text-align: center;
+      margin: 0.5rem auto 1.5rem;
+      max-width: 640px;
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      background: #e5f3ff;
+      color: #0a192f;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    ul li {
+      margin-bottom: 0.4rem;
     }
   </style>
 </head>
@@ -37,66 +91,113 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <h1 class="project-title">Project Icarus Flight Simulations</h1>
+    <p class="project-subtitle">
+      Python-based vertical flight simulations for a quadrotor platform, modeling thrust, sensor noise,
+      and PID control to achieve a stable 10&nbsp;m hover and soft landing profile.
+    </p>
 
-    <section>
-      <h2>Overview</h2>
-      <p>
-        This project focuses on simulating the flight dynamics and control algorithms of Project Icarus.
-        Current focus on Python Simulations and integrating simple controls to smooth flight profile.
-      </p>
+    <div class="project-meta">
+      <span class="badge">Python · NumPy · Matplotlib</span>
+      <span class="badge">Quadrotor Vertical Dynamics</span>
+      <span class="badge">PID Control</span>
+      <span class="badge">Noise + Filtering</span>
+    </div>
+
+    <!-- Overview + Highlights -->
+    <section class="two-column">
+      <div>
+        <h2>Overview</h2>
+        <p>
+          This simulation work focuses on the vertical flight dynamics and control algorithms for
+          Project Icarus, a quadrotor platform. The current emphasis is on modeling thrust, adding
+          realistic sensor noise, and tuning PID control to create a smooth three-phase flight:
+          takeoff, 10&nbsp;m hover, and soft landing.
+        </p>
+      </div>
+
+      <div>
+        <h2>Key Highlights</h2>
+        <ul>
+          <li>Implemented vertical thrust simulations with autonomous altitude tracking.</li>
+          <li>Modeled noisy thrust and RPM measurements and evaluated controller robustness.</li>
+          <li>Applied low-pass filtering to stabilize control inputs under measurement noise.</li>
+          <li>Designed a three-phase profile: ground → 10&nbsp;m hover → soft touchdown.</li>
+        </ul>
+      </div>
     </section>
 
+    <!-- Gallery -->
     <section>
       <h2>Simulation Gallery</h2>
+      <p>
+        Selected plots from the current simulation pipeline, including baseline hover response,
+        noisy PID behavior, and the effect of low-pass filtering on thrust commands.
+      </p>
+
       <div class="gallery">
         <figure class="media-card">
           <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Hover Simulation" />
-          <figcaption>Autonomous hover test in Python.</figcaption>
+          <figcaption>Baseline autonomous 10&nbsp;m hover test in Python.</figcaption>
         </figure>
         
         <figure class="media-card">
           <img src="images/NoisyTest1.png" alt="Noisy Thrust Plot with PID for 10m Hover" />
           <img src="images/NoisyTest1_RPM.png" alt="Noisy RPM Plot with PID for 10m Hover" />
-          <figcaption>Noisy Thrust and RPM Plots with PID for 10m Hover</figcaption>
+          <figcaption>
+            Noisy thrust and RPM response under PID control during 10&nbsp;m hover.
+          </figcaption>
         </figure>
+
         <figure class="media-card">
           <img src="images/LowPassTest1.png" alt="Low-Pass Filtered Noisy Thrust Plot with PID for 10m Hover" />
-          <figcaption>Low-Pass Filtered Noisy Thrust Plot with PID for 10m Hover</figcaption>
+          <figcaption>
+            Low-pass filtered thrust signal showing smoother control action despite noise.
+          </figcaption>
         </figure>
-        <!--
+
+        <!-- Optional video later
         <figure class="media-card">
           <video controls>
             <source src="videos/sim_flight.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption>Full simulated flight demonstrating takeoff, navigation, and landing.</figcaption>
+          <figcaption>Full simulated flight demonstrating takeoff, hover, and landing.</figcaption>
         </figure>
         -->
       </div>
     </section>
 
-    <section>
-      <h2>Current Progress</h2>
-      <p>
-        Python simulation was successful of a simple three phase flight. The next step will be adding PID to go from ground -> 10m -> soft landing.
-      </p>
+    <!-- Results + Next Steps -->
+    <section class="two-column">
+      <div>
+        <h2>Results So Far</h2>
+        <ul>
+          <li>Successful simulation of a simple three-phase vertical flight profile.</li>
+          <li>PID controller tuned to track a 10&nbsp;m altitude target in the presence of noise.</li>
+          <li>Demonstrated reduction in thrust oscillations after applying low-pass filtering.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Next Steps</h2>
+        <ul>
+          <li>Refine PID gains to minimize overshoot and settling time at 10&nbsp;m.</li>
+          <li>Extend the model to include lateral motion and more realistic actuator limits.</li>
+          <li>Deploy and validate the three-phase profile on the physical Icarus platform.</li>
+        </ul>
+      </div>
     </section>
 
+    <!-- Technical stack / focus -->
     <section>
-      <h2>Upcoming Goals</h2>
+      <h2>Technical Focus</h2>
       <ul>
-        <li>Implement working PID control algorithm to smooth flight acceleration and accurately reach targets.</li>
-        <li>Test simple three-phase flight on Icarus platform.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Technical Details</h2>
-      <ul>
-        <li><strong>Simulation Software:</strong> Python</li>
-        <li><strong>Programming:</strong> Python for autonomous flight scripts and PID tuning</li>
-        <li><strong>Focus Areas:</strong> Dynamics modeling, state estimation, autonomous control testing</li>
+        <li><strong>Language & Tools:</strong> Python, NumPy, Matplotlib.</li>
+        <li><strong>Control:</strong> PID altitude control with noise-robust tuning.</li>
+        <li><strong>Modeling:</strong> Vertical thrust dynamics and noisy sensor measurements.</li>
+        <li><strong>Signal Processing:</strong> Low-pass filtering for smoother control inputs.</li>
       </ul>
     </section>
   </main>
