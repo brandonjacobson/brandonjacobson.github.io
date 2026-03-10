@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Icarus — State Estimation & Control | Brandon Jacobson</title>
+  <meta name="description" content="6-DoF quadrotor simulation with Kalman filter state estimation, complementary attitude filtering, and closed-loop PID trajectory tracking." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Brandon Jacobson</a>
+
+      <button class="nav-toggle-btn" aria-label="Toggle menu" onclick="
+        document.querySelector('.nav-links').classList.toggle('open')
+      ">☰</button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-desktop">Home</a>
+        <a href="projects.html" class="nav-desktop">Projects</a>
+        <a href="https://github.com/brandonjacobson" target="_blank" rel="noreferrer" class="nav-desktop">GitHub</a>
+        <a href="https://www.linkedin.com/in/b-jacobson" target="_blank" rel="noreferrer" class="nav-desktop">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer" class="nav-resume">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-container">
+
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="projects.html">Projects</a>
+        <span>/</span>
+        <span>Icarus — State Estimation</span>
+      </div>
+
+      <!-- ── Page Hero ── -->
+      <div class="project-page-hero">
+        <h1 class="project-page-title">Project Icarus — State Estimation &amp; Control</h1>
+        <p class="project-page-subtitle">
+          6-DoF quadrotor simulation with Kalman filter state estimation,
+          complementary attitude filtering, and closed-loop PID trajectory tracking.
+        </p>
+        <div class="badge-row">
+          <span class="badge">6-DoF Simulation</span>
+          <span class="badge">Kalman Filter</span>
+          <span class="badge">Complementary Filter</span>
+          <span class="badge">PID Control</span>
+          <span class="badge">Python · NumPy</span>
+        </div>
+      </div>
+
+      <!-- ── Simulation GIF ── -->
+      <div class="project-section">
+        <h2>Simulation</h2>
+        <div class="sim-gif-wrap">
+          <img
+            src="images/KF/drone_trajectory.gif"
+            alt="6-DoF quadrotor simulation animating trajectory tracking through step waypoints using Kalman-filtered state estimates"
+            loading="eager"
+          />
+          <p class="sim-gif-caption">
+            6-DoF quadrotor simulation — Kalman-filtered state estimates drive
+            closed-loop PID control through a sequence of step waypoints.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── System Overview ── -->
+      <div class="two-column project-section">
+        <div>
+          <h2>System Overview</h2>
+          <p>
+            Project Icarus implements a full 6-DoF quadrotor simulation in Python, combining
+            nonlinear flight dynamics with a sensor fusion stack and closed-loop control.
+            The system models realistic GPS and IMU noise, fuses measurements with a Kalman
+            filter and complementary filter, and tracks step waypoints using a PID controller
+            operating on estimated states.
+          </p>
+        </div>
+        <div>
+          <h2>Key Results</h2>
+          <ul>
+            <li>Kalman filter converges rapidly from noisy GPS to within centimeters of true position.</li>
+            <li>Closed-loop controller tracks step waypoints in X, Y, and Z simultaneously.</li>
+            <li>Attitude remains stable through aggressive position transitions (&lt;30° max tilt).</li>
+            <li>All four motor RPMs converge to steady-state hover after each maneuver.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Supporting Plots ── -->
+      <div class="project-section">
+        <h2>State Estimation Results</h2>
+        <p>
+          The plots below show how the Kalman filter performs against raw sensor data and ground truth
+          across the full 30-second flight — and how the complete system (position, attitude, motors)
+          responds to commanded waypoints.
+        </p>
+
+        <div class="plot-grid" style="margin-top: var(--sp-6)">
+
+          <div class="plot-card">
+            <div class="plot-card-img">
+              <img
+                src="images/KF/KF_Position_Estimation_Success_3_9_26.png"
+                alt="Kalman filter position estimation: true position vs. KF estimate vs. noisy GPS readings across X, Y, and Z axes"
+                loading="lazy"
+              />
+            </div>
+            <div class="plot-card-caption">
+              <strong>Kalman Filter: True vs. Estimated vs. GPS</strong>
+              <p>
+                KF estimate (red) tracks true position (blue) closely despite scattered
+                GPS readings (green ×). Altimeter data (orange) fuses with GPS for Z-axis
+                estimation. Filter converges within the first second of each maneuver.
+              </p>
+            </div>
+          </div>
+
+          <div class="plot-card">
+            <div class="plot-card-img">
+              <img
+                src="images/KF/KF_Success_Position_Attitude_Motors_3_9_26.png"
+                alt="Full system telemetry: position tracking vs step waypoints, Euler attitude angles, and four motor RPMs over 30 seconds"
+                loading="lazy"
+              />
+            </div>
+            <div class="plot-card-caption">
+              <strong>Full System Telemetry — Position, Attitude &amp; Motors</strong>
+              <p>
+                Top: X/Y/Z position tracks step waypoints (dashed) with clean transient response.
+                Middle: Euler angles (roll, pitch, yaw) remain bounded, settling to near-zero
+                in hover. Bottom: All four motor RPMs converge to steady-state after each waypoint.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Technical Explanation ── -->
+      <div class="project-section">
+        <h2>Technical Architecture</h2>
+        <div class="tech-callout">
+          <p>
+            Project Icarus implements a <strong>6-state Kalman Filter</strong> to estimate
+            translational position and velocity — [x, y, z, ẋ, ẏ, ż] — from noisy GPS
+            and altimeter measurements. A <strong>complementary filter</strong> running on
+            simulated IMU data provides high-frequency attitude estimates (roll, pitch, yaw),
+            bypassing low-bandwidth sensor lag. These estimated states feed directly into a
+            <strong>closed-loop PID controller</strong> for trajectory tracking.
+          </p>
+          <p>
+            The plots above demonstrate Kalman filter convergence from noisy measurements
+            to stable state estimates in real time — the core requirement for any onboard
+            GNC system where sensor fusion quality directly determines control performance.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Technical Details ── -->
+      <div class="two-column project-section">
+        <div>
+          <h2>Implementation Details</h2>
+          <ul>
+            <li><strong>Language &amp; Tools:</strong> Python, NumPy, Matplotlib, SciPy</li>
+            <li><strong>Dynamics:</strong> Nonlinear 6-DoF quadrotor rigid body model</li>
+            <li><strong>Estimator:</strong> 6-state linear Kalman filter (position + velocity)</li>
+            <li><strong>Attitude:</strong> Complementary filter on simulated IMU data</li>
+            <li><strong>Control:</strong> Cascade PID — outer position loop, inner attitude loop</li>
+            <li><strong>Noise Model:</strong> Gaussian GPS noise, altimeter bias, IMU drift</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Next Steps</h2>
+          <ul>
+            <li>Extend to an Extended Kalman Filter (EKF) for nonlinear state estimation.</li>
+            <li>Implement trajectory planning (minimum-snap or waypoint interpolation).</li>
+            <li>Port control law to the physical Icarus hardware platform.</li>
+            <li>Validate closed-loop estimator performance against real flight data.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Links ── -->
+      <div class="project-section">
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+          <a
+            href="https://github.com/brandonjacobson/Project-Icarus"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noreferrer"
+          >View Code on GitHub</a>
+          <a href="icarus_sim.html" class="btn btn-outline">Earlier Simulations</a>
+          <a href="icarus.html" class="btn btn-outline">Hardware Platform</a>
+        </div>
+      </div>
+
+    </div><!-- /.page-container -->
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Brandon Jacobson</p>
+    <p><a href="mailto:brandonjacobson0@gmail.com">brandonjacobson0@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

@@ -200,19 +200,23 @@ li { margin-bottom: 0.4rem; }
   flex-shrink: 0;
 }
 
+.hero-left {
+  max-width: 540px;
+}
+
 .hero-title {
-  font-size: clamp(1.9rem, 3.8vw, 2.75rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
   font-weight: 700;
   color: var(--text);
-  margin-bottom: var(--sp-5);
-  line-height: 1.15;
+  margin-bottom: var(--sp-6);
+  line-height: 1.12;
 }
 
 .hero-subtitle {
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.75;
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-6);
 }
 
 .hero-tagline {
@@ -269,6 +273,35 @@ li { margin-bottom: 0.4rem; }
   line-height: 1.5;
 }
 
+/* Bullet list inside status card */
+.status-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-1) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.status-list li {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.status-list li::before {
+  content: '·';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
 /* ================================================
    Buttons
    ================================================ */
@@ -276,7 +309,7 @@ li { margin-bottom: 0.4rem; }
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: 0.55rem 1.1rem;
+  padding: 0.6rem 1.25rem;
   border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 600;
@@ -286,13 +319,17 @@ li { margin-bottom: 0.4rem; }
   border: none;
   white-space: nowrap;
   font-family: inherit;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
   background: var(--text);
   color: #ffffff;
 }
-.btn-primary:hover { background: #1e293b; }
+.btn-primary:hover {
+  background: #1e293b;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.18);
+}
 
 .btn-outline {
   background: transparent;
@@ -300,7 +337,7 @@ li { margin-bottom: 0.4rem; }
   border: 1px solid var(--border);
 }
 .btn-outline:hover {
-  background: var(--surface);
+  background: var(--surface-alt);
   border-color: var(--border-hover);
 }
 
@@ -428,6 +465,73 @@ li { margin-bottom: 0.4rem; }
 .project-card-link:hover {
   gap: 0.45rem;
   text-decoration: underline;
+}
+
+/* ================================================
+   Recent Work Card
+   ================================================ */
+.recent-work-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  transition: box-shadow var(--transition);
+}
+
+.recent-work-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.recent-work-content {
+  padding: var(--sp-6) var(--sp-7, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  justify-content: center;
+}
+
+.recent-work-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--accent);
+}
+
+.recent-work-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.recent-work-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+  margin: 0;
+}
+
+.recent-work-image {
+  background: var(--surface-alt);
+  border-left: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  min-height: 220px;
+}
+
+.recent-work-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  display: block;
 }
 
 /* ================================================
@@ -738,6 +842,112 @@ li { margin-bottom: 0.4rem; }
 }
 
 /* ================================================
+   Simulation GIF + Plot Grid (KF pages)
+   ================================================ */
+.sim-gif-wrap {
+  margin: 0 auto var(--sp-8);
+  max-width: 920px;
+}
+
+.sim-gif-wrap img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+.sim-gif-caption {
+  margin-top: var(--sp-3);
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.plot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-5);
+}
+
+.plot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition);
+}
+
+.plot-card:hover { box-shadow: var(--shadow-lg); }
+
+.plot-card-img {
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-3);
+}
+
+.plot-card-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.plot-card-caption {
+  padding: var(--sp-4) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.plot-card-caption strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.plot-card-caption p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Technical explanation box */
+.tech-callout {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--sp-5) var(--sp-6);
+}
+
+.tech-callout p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.tech-callout p + p { margin-top: var(--sp-3); }
+
+.tech-callout strong { color: var(--text); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .plot-grid { grid-template-columns: 1fr; }
+}
+
+/* ================================================
    Animations
    ================================================ */
 @keyframes fadeInUp {
@@ -762,6 +972,18 @@ li { margin-bottom: 0.4rem; }
     grid-template-columns: 1fr;
     gap: var(--sp-8);
     padding: var(--sp-10) 0 var(--sp-8);
+  }
+
+  .hero-left { max-width: 100%; }
+
+  .recent-work-card {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-work-image {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    min-height: 180px;
   }
 
   .two-column {

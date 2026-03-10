@@ -46,14 +46,47 @@
 
       <div class="project-grid-lg">
 
-        <!-- Project: Icarus Hardware -->
+        <!-- Project: Icarus KF Simulation (featured, newest) -->
         <article class="project-card-lg fade-in delay-1">
+          <div class="project-thumb" style="background:var(--surface-alt)">
+            <img
+              src="images/KF/drone_trajectory.gif"
+              alt="6-DoF quadrotor trajectory simulation"
+              style="object-fit:contain;padding:0.5rem"
+            />
+          </div>
+          <div class="project-card-body">
+            <div>
+              <h2 class="project-card-title" style="font-size:1.15rem">Icarus — State Estimation &amp; Control</h2>
+              <p class="project-card-meta" style="margin-top:0.2rem">2025 – Present · GNC Simulation</p>
+            </div>
+            <div class="project-card-tags">
+              <span class="tag">Kalman Filter</span>
+              <span class="tag">6-DoF Dynamics</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">Python</span>
+              <span class="tag">NumPy</span>
+            </div>
+            <p class="project-card-desc">
+              6-DoF nonlinear quadrotor simulation with a Kalman filter estimating position and
+              velocity from noisy GPS, complementary filter for attitude, and cascade PID
+              closed-loop control for step waypoint tracking.
+            </p>
+            <div class="project-card-actions">
+              <a class="btn btn-primary" href="https://github.com/brandonjacobson/Project-Icarus" target="_blank" rel="noreferrer">View Code</a>
+              <a class="btn btn-outline" href="icarus_kf.html">See More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project: Icarus Hardware -->
+        <article class="project-card-lg fade-in delay-2">
           <div class="project-thumb">
             <img src="images/icarus_build.jpg" alt="Project Icarus quadcopter hardware build" />
           </div>
           <div class="project-card-body">
             <div>
-              <h2 class="project-card-title" style="font-size:1.15rem">Project Icarus</h2>
+              <h2 class="project-card-title" style="font-size:1.15rem">Icarus — Hardware Platform</h2>
               <p class="project-card-meta" style="margin-top:0.2rem">2025 – Present · Personal Project</p>
             </div>
             <div class="project-card-tags">
@@ -61,14 +94,11 @@
               <span class="tag">Pixhawk</span>
               <span class="tag">MAVSDK</span>
               <span class="tag">C++</span>
-              <span class="tag">Python</span>
-              <span class="tag">PID</span>
-              <span class="tag">Kalman Filter</span>
+              <span class="tag">Raspberry Pi</span>
             </div>
             <p class="project-card-desc">
-              Building a PX4-based quadcopter to study flight control and autonomy. Integrated ESCs,
-              power distribution, and a Pixhawk flight controller; developing MAVSDK scripts for
-              autonomous takeoff, hover, landing, and telemetry logging.
+              Custom quadcopter with Pixhawk flight controller, 35A ESCs, 4S LiPo, and Raspberry Pi
+              companion computer. Developing MAVSDK scripts for autonomous takeoff, hover, and landing.
             </p>
             <div class="project-card-actions">
               <a class="btn btn-primary" href="https://github.com/brandonjacobson/Project-Icarus" target="_blank" rel="noreferrer">View Code</a>
@@ -77,25 +107,25 @@
           </div>
         </article>
 
-        <!-- Project: Icarus Simulation -->
-        <article class="project-card-lg fade-in delay-2">
+        <!-- Project: 1D Flight Simulation -->
+        <article class="project-card-lg fade-in delay-3">
           <div class="project-thumb">
-            <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Icarus vertical flight simulation plot" />
+            <img src="images/Vertical_Thrust_Test1_Plot.png" alt="1D vertical flight simulation plot" />
           </div>
           <div class="project-card-body">
             <div>
-              <h2 class="project-card-title" style="font-size:1.15rem">Icarus Flight Simulation</h2>
-              <p class="project-card-meta" style="margin-top:0.2rem">Simulation Project</p>
+              <h2 class="project-card-title" style="font-size:1.15rem">Icarus — 1D Flight Simulation</h2>
+              <p class="project-card-meta" style="margin-top:0.2rem">Simulation Project · Predecessor to 6-DoF</p>
             </div>
             <div class="project-card-tags">
               <span class="tag">Python</span>
-              <span class="tag">NumPy</span>
-              <span class="tag">Matplotlib</span>
               <span class="tag">PID Control</span>
+              <span class="tag">Noise Modeling</span>
+              <span class="tag">Low-Pass Filter</span>
             </div>
             <p class="project-card-desc">
-              Python-based 1D flight simulation modeling three phases: powered ascent, hover, and
-              landing. Includes noisy sensor modeling and low-pass filtering for PID robustness.
+              1D vertical flight simulation modeling powered ascent, hover, and soft landing
+              with noisy sensor modeling and low-pass filtering for PID robustness evaluation.
             </p>
             <div class="project-card-actions">
               <a class="btn btn-primary" href="https://github.com/brandonjacobson/Project-Icarus/tree/main/Simulations/" target="_blank" rel="noreferrer">View Code</a>

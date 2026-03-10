@@ -37,9 +37,8 @@
           <p class="hero-eyebrow">GNC &amp; Flight Software</p>
           <h1 class="hero-title">Building autonomous systems for aerospace.</h1>
           <p class="hero-subtitle">
-            I'm an Aerospace Engineering, Computer Science, and Mathematics student at the
-            University of Florida — focused on guidance, navigation, and control for autonomous
-            vehicles. I work at the intersection of flight dynamics, control theory, and software.
+            Aerospace Engineering, Computer Science, and Mathematics student at the University of Florida —
+            focused on guidance, navigation, and control for autonomous aerospace vehicles.
           </p>
           <div class="hero-actions">
             <a href="https://github.com/brandonjacobson" class="btn btn-primary" target="_blank" rel="noreferrer">GitHub</a>
@@ -48,26 +47,60 @@
           </div>
         </div>
 
-        <aside class="status-card fade-in delay-2" aria-label="Quick facts">
+        <aside class="status-card fade-in delay-2" aria-label="Technical summary">
           <div class="status-row">
-            <span class="status-label">Focus Areas</span>
-            <span class="status-value">Guidance &amp; Navigation · Control Systems · Flight Software</span>
+            <span class="status-label">Engineering Focus</span>
+            <ul class="status-list">
+              <li>Guidance, Navigation &amp; Control (GNC)</li>
+              <li>Control Systems &amp; Flight Dynamics</li>
+              <li>Flight Software &amp; Embedded Systems</li>
+            </ul>
           </div>
           <div class="status-row">
-            <span class="status-label">Currently</span>
-            <span class="status-value">Simulating quadrotor flight — Project Icarus</span>
+            <span class="status-label">Currently Building</span>
+            <span class="status-value">Project Icarus — Kalman filter state estimation on 6-DoF quadrotor simulation with closed-loop PID control.</span>
           </div>
           <div class="status-row">
-            <span class="status-label">Stack</span>
-            <div class="pill-row" style="margin-top:0.4rem">
-              <span class="pill">Python</span>
-              <span class="pill">C++</span>
-              <span class="pill">MATLAB</span>
-              <span class="pill">NumPy</span>
-              <span class="pill">Matplotlib</span>
-            </div>
+            <span class="status-label">Tech Stack</span>
+            <span class="status-value" style="color:var(--text-muted);font-weight:400;font-size:0.875rem">Python · C++ · MATLAB · NumPy · Matplotlib</span>
           </div>
         </aside>
+      </section>
+
+      <!-- ── Recent Work ── -->
+      <section class="section" id="recent-work">
+        <div class="section-header">
+          <h2 class="section-title">Recent Work</h2>
+        </div>
+
+        <div class="recent-work-card">
+          <div class="recent-work-content">
+            <div>
+              <p class="recent-work-eyebrow">Project Icarus · State Estimation</p>
+              <h3 class="recent-work-title">6-DoF Quadrotor Simulation with Kalman Filter</h3>
+            </div>
+            <p class="recent-work-desc">
+              Full 6-DoF quadrotor simulation with a Kalman filter estimating position and velocity
+              from noisy GPS, a complementary filter for attitude, and a closed-loop PID controller
+              tracking step waypoints through the simulated trajectory.
+            </p>
+            <div class="project-card-tags">
+              <span class="tag">Kalman Filter</span>
+              <span class="tag">6-DoF Dynamics</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">Python</span>
+              <span class="tag">NumPy</span>
+            </div>
+            <a href="icarus_kf.html" class="project-card-link">View simulation →</a>
+          </div>
+          <div class="recent-work-image">
+            <img
+              src="images/KF/drone_trajectory.gif"
+              alt="6-DoF quadrotor trajectory simulation animated GIF"
+              loading="eager"
+            />
+          </div>
+        </div>
       </section>
 
       <!-- ── About ── -->
@@ -77,13 +110,17 @@
         </div>
         <div class="about-body">
           <p>
-            I'm interested in how we can design vehicles that understand their environment well enough
-            to make reliable decisions on their own. A lot of my work revolves around simulating flight
-            dynamics, designing controllers, and writing the software that sits between theory and hardware.
+            I'm interested in designing vehicles that understand their environment well enough
+            to make reliable decisions on their own.
           </p>
           <p>
-            I enjoy projects where I can own the pipeline end-to-end — modeling the system,
-            implementing the algorithms, and validating behavior through simulation and testing.
+            Most of my work lives at the intersection of flight dynamics and control theory —
+            modeling plant behavior, building estimators, and implementing the closed-loop
+            control that makes simulation results transfer to hardware.
+          </p>
+          <p>
+            I like owning the full pipeline: from mathematical model to working code,
+            validated through rigorous simulation before touching real hardware.
           </p>
         </div>
       </section>
