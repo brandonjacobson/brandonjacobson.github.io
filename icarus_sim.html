@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Icarus Flight Simulations | Brandon Jacobson</title>
-  <meta name="description" content="Python-based quadrotor vertical flight simulations with PID control, sensor noise, and low-pass filtering." />
+  <meta name="description" content="Project Icarus simulation work — from 1D PID altitude control to full 6-DoF quadrotor simulation with Kalman filter state estimation." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -39,55 +39,128 @@
         <span>Icarus Simulations</span>
       </div>
 
-      <!-- Hero -->
+      <!-- ── Page Hero ── -->
       <div class="project-page-hero">
-        <h1 class="project-page-title">Project Icarus Flight Simulations</h1>
+        <h1 class="project-page-title">Project Icarus — Flight Simulations</h1>
         <p class="project-page-subtitle">
-          Python-based vertical flight simulations for a quadrotor platform — modeling thrust,
-          sensor noise, and PID control to achieve a stable 10&nbsp;m hover and soft landing.
+          Simulation work for Project Icarus, progressing from 1D PID altitude control
+          to a full 6-DoF quadrotor simulation with Kalman filter state estimation and
+          closed-loop trajectory tracking.
         </p>
         <div class="badge-row">
           <span class="badge">Python · NumPy · Matplotlib</span>
-          <span class="badge">Quadrotor Vertical Dynamics</span>
+          <span class="badge">6-DoF Dynamics</span>
+          <span class="badge">Kalman Filter</span>
           <span class="badge">PID Control</span>
-          <span class="badge">Noise + Filtering</span>
         </div>
       </div>
 
-      <!-- Overview + Key Highlights -->
-      <div class="two-column project-section">
-        <div>
-          <h2>Overview</h2>
-          <p>
-            This simulation work focuses on the vertical flight dynamics and control algorithms for
-            Project Icarus. The current emphasis is on modeling thrust, adding realistic sensor noise,
-            and tuning PID control to create a smooth three-phase flight: takeoff, 10&nbsp;m hover,
-            and soft landing.
+      <!-- ════════════════════════════════════════
+           SECTION 1 — 6-DoF + Kalman Filter (latest)
+           ════════════════════════════════════════ -->
+      <div class="project-section" id="kf-simulation">
+        <h2>6-DoF Simulation with Kalman Filter State Estimation</h2>
+
+        <!-- Simulation GIF -->
+        <div class="sim-gif-wrap">
+          <img
+            src="images/KF/drone_trajectory.gif"
+            alt="6-DoF quadrotor simulation animating trajectory tracking through step waypoints using Kalman-filtered state estimates"
+            loading="eager"
+          />
+          <p class="sim-gif-caption">
+            6-DoF quadrotor simulation — Kalman-filtered state estimates drive
+            closed-loop PID control through a sequence of step waypoints.
           </p>
         </div>
-        <div>
-          <h2>Key Highlights</h2>
-          <ul>
-            <li>Implemented vertical thrust simulations with autonomous altitude tracking.</li>
-            <li>Modeled noisy thrust and RPM measurements and evaluated controller robustness.</li>
-            <li>Applied low-pass filtering to stabilize control inputs under measurement noise.</li>
-            <li>Designed a three-phase profile: ground → 10&nbsp;m hover → soft touchdown.</li>
-          </ul>
+
+        <!-- Overview + Results -->
+        <div class="two-column" style="margin-bottom: var(--sp-8)">
+          <div>
+            <p style="color:var(--text-muted);line-height:1.8;font-size:0.95rem">
+              The current simulation extends the 1D work to a full 6-DoF nonlinear quadrotor model.
+              A 6-state Kalman filter fuses noisy GPS and altimeter measurements to estimate
+              position and velocity, while a complementary filter handles attitude from simulated
+              IMU data. These estimated states drive a cascade PID controller tracking
+              step waypoints in X, Y, and Z simultaneously.
+            </p>
+          </div>
+          <div>
+            <ul style="color:var(--text-muted);line-height:1.8;font-size:0.95rem">
+              <li>KF estimate converges to within centimeters of true position despite noisy GPS.</li>
+              <li>Closed-loop controller tracks step waypoints across all three axes.</li>
+              <li>Attitude remains stable through position transitions (&lt;30° max tilt).</li>
+              <li>All four motor RPMs converge to steady-state hover after each waypoint.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Plots -->
+        <div class="plot-grid">
+          <div class="plot-card">
+            <div class="plot-card-img">
+              <img
+                src="images/KF/KF_Position_Estimation_Success_3_9_26.png"
+                alt="Kalman filter position estimation: true position vs. KF estimate vs. noisy GPS across X, Y, and Z axes"
+                loading="lazy"
+              />
+            </div>
+            <div class="plot-card-caption">
+              <strong>Kalman Filter — True vs. Estimated vs. GPS</strong>
+              <p>
+                KF estimate (red) tracks true position (blue) closely despite scattered GPS
+                readings (green ×). Altimeter data (orange) fuses with GPS for Z-axis estimation.
+              </p>
+            </div>
+          </div>
+
+          <div class="plot-card">
+            <div class="plot-card-img">
+              <img
+                src="images/KF/KF_Success_Position_Attitude_Motors_3_9_26.png"
+                alt="Full system telemetry: position tracking, Euler attitude angles, and four motor RPMs over 30 seconds"
+                loading="lazy"
+              />
+            </div>
+            <div class="plot-card-caption">
+              <strong>Full Telemetry — Position, Attitude &amp; Motors</strong>
+              <p>
+                X/Y/Z position tracks step waypoints (dashed) with clean transient response.
+                Euler angles settle to near-zero in hover. All four motor RPMs converge
+                after each commanded waypoint.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical callout -->
+        <div class="tech-callout" style="margin-top: var(--sp-6)">
+          <p>
+            A <strong>6-state linear Kalman filter</strong> estimates [x, y, z, ẋ, ẏ, ż]
+            from noisy GPS and altimeter measurements. A <strong>complementary filter</strong>
+            running on simulated IMU data provides high-frequency attitude estimates (roll, pitch,
+            yaw). These fused states feed a <strong>cascade PID controller</strong> —
+            outer position loop commanding attitude targets, inner attitude loop commanding
+            motor thrust — for closed-loop trajectory tracking in the nonlinear 6-DoF model.
+          </p>
         </div>
       </div>
 
-      <!-- Simulation Gallery -->
-      <div class="project-section">
-        <h2>Simulation Gallery</h2>
-        <p>
-          Selected plots from the current simulation pipeline — baseline hover response,
-          noisy PID behavior, and the effect of low-pass filtering on thrust commands.
+      <!-- ════════════════════════════════════════
+           SECTION 2 — 1D Simulation (earlier work)
+           ════════════════════════════════════════ -->
+      <div class="project-section" id="1d-simulation" style="padding-top:var(--sp-8);border-top:1px solid var(--border)">
+        <h2>Earlier Work — 1D Vertical Flight Simulation</h2>
+        <p style="color:var(--text-muted);line-height:1.8;font-size:0.95rem;margin-bottom:var(--sp-6)">
+          The starting point for Icarus simulation work. A 1D model of vertical flight dynamics
+          with PID altitude control, sensor noise modeling, and low-pass filtering — used to
+          validate the control approach before moving to 6-DoF.
         </p>
 
         <div class="gallery">
           <figure class="media-card">
             <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Baseline autonomous 10 m hover simulation plot" />
-            <figcaption>Baseline autonomous 10&nbsp;m hover test in Python.</figcaption>
+            <figcaption>Baseline autonomous 10&nbsp;m hover test — altitude and thrust vs. time.</figcaption>
           </figure>
 
           <figure class="media-card">
@@ -98,40 +171,38 @@
 
           <figure class="media-card">
             <img src="images/LowPassTest1.png" alt="Low-pass filtered thrust signal" />
-            <figcaption>Low-pass filtered thrust signal showing smoother control action despite noise.</figcaption>
+            <figcaption>Low-pass filtered thrust signal showing smoother control despite noise.</figcaption>
           </figure>
         </div>
+
+        <div class="two-column" style="margin-top:var(--sp-8)">
+          <div>
+            <h2 style="font-size:1rem;margin-bottom:var(--sp-3)">Key Highlights</h2>
+            <ul style="color:var(--text-muted);line-height:1.8;font-size:0.92rem">
+              <li>Implemented vertical thrust simulation with autonomous altitude tracking.</li>
+              <li>Modeled noisy thrust and RPM measurements and evaluated controller robustness.</li>
+              <li>Applied low-pass filtering to stabilize control inputs under measurement noise.</li>
+              <li>Three-phase profile: ground → 10&nbsp;m hover → soft touchdown.</li>
+            </ul>
+          </div>
+          <div>
+            <h2 style="font-size:1rem;margin-bottom:var(--sp-3)">Stack</h2>
+            <ul style="color:var(--text-muted);line-height:1.8;font-size:0.92rem">
+              <li><strong>Language &amp; Tools:</strong> Python, NumPy, Matplotlib</li>
+              <li><strong>Control:</strong> PID altitude control with noise-robust tuning</li>
+              <li><strong>Modeling:</strong> Vertical thrust dynamics, noisy sensor measurements</li>
+              <li><strong>Signal Processing:</strong> Low-pass filtering for smoother control inputs</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <!-- Results + Next Steps -->
-      <div class="two-column project-section">
-        <div>
-          <h2>Results So Far</h2>
-          <ul>
-            <li>Successful simulation of a simple three-phase vertical flight profile.</li>
-            <li>PID controller tuned to track a 10&nbsp;m altitude target in the presence of noise.</li>
-            <li>Demonstrated reduction in thrust oscillations after applying low-pass filtering.</li>
-          </ul>
-        </div>
-        <div>
-          <h2>Next Steps</h2>
-          <ul>
-            <li>Refine PID gains to minimize overshoot and settling time at 10&nbsp;m.</li>
-            <li>Extend the model to include lateral motion and more realistic actuator limits.</li>
-            <li>Deploy and validate the three-phase profile on the physical Icarus platform.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Technical Focus -->
+      <!-- ── Links ── -->
       <div class="project-section">
-        <h2>Technical Focus</h2>
-        <ul>
-          <li><strong>Language &amp; Tools:</strong> Python, NumPy, Matplotlib.</li>
-          <li><strong>Control:</strong> PID altitude control with noise-robust tuning.</li>
-          <li><strong>Modeling:</strong> Vertical thrust dynamics and noisy sensor measurements.</li>
-          <li><strong>Signal Processing:</strong> Low-pass filtering for smoother control inputs.</li>
-        </ul>
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+          <a href="https://github.com/brandonjacobson/Project-Icarus" class="btn btn-primary" target="_blank" rel="noreferrer">View Code on GitHub</a>
+          <a href="icarus.html" class="btn btn-outline">Hardware Platform</a>
+        </div>
       </div>
 
     </div><!-- /.page-container -->
