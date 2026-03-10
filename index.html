@@ -3,297 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon Jacobson | Portfolio</title>
+  <title>Brandon Jacobson | Aerospace Engineering</title>
+  <meta name="description" content="Aerospace Engineering student at UF focused on GNC, flight software, and embedded systems." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    main {
-      max-width: 1040px;
-      margin: 2rem auto;
-      padding: 0 1.5rem 2.5rem;
-    }
-
-    /* Hero section */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-intro h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: #0a192f;
-    }
-
-    .hero-intro p {
-      margin: 0.25rem 0;
-      line-height: 1.5;
-      color: #4b5563;
-    }
-
-    .hero-tagline {
-      margin-top: 0.75rem;
-      font-weight: 500;
-      color: #111827;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      padding: 1rem 1.25rem;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: #374151;
-    }
-
-    .meta-label {
-      font-weight: 600;
-      color: #0a192f;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.25rem;
-    }
-
-    .pill {
-      background: #e5f3ff;
-      color: #0a192f;
-      border-radius: 999px;
-      padding: 0.25rem 0.7rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    /* Featured projects */
-    .section-title {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .section-title h2 {
-      margin-top: 0;
-      margin-bottom: 0.25rem;
-    }
-
-    .section-subtext {
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.25rem;
-    }
-
-    .project-card {
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-      padding: 1rem 1.1rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.12);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.4rem;
-      font-size: 1.1rem;
-      color: #0a192f;
-    }
-
-    .project-card p {
-      margin: 0.3rem 0 0.7rem;
-      font-size: 0.93rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .project-tag {
-      background: #f3f4f6;
-      border-radius: 999px;
-      padding: 0.18rem 0.6rem;
-      font-size: 0.78rem;
-      color: #374151;
-    }
-
-    .project-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #064e3b;
-      text-decoration: none;
-    }
-
-    .project-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Smaller screens */
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <h1>Brandon Jacobson</h1>
-    <p>Aerospace Engineering | Computer Science | Mathematics @ University of Florida</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="Resume.pdf" target="_blank">Resume</a>
-      <a href="https://github.com/brandonjacobson" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/b-jacobson" target="_blank">LinkedIn</a>
-    </nav>
-  </header>
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Brandon Jacobson</a>
+
+      <button class="nav-toggle-btn" aria-label="Toggle menu" onclick="
+        document.querySelector('.nav-links').classList.toggle('open')
+      ">☰</button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-desktop">Home</a>
+        <a href="projects.html" class="nav-desktop">Projects</a>
+        <a href="https://github.com/brandonjacobson" target="_blank" rel="noreferrer" class="nav-desktop">GitHub</a>
+        <a href="https://www.linkedin.com/in/b-jacobson" target="_blank" rel="noreferrer" class="nav-desktop">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer" class="nav-resume">Resume</a>
+      </div>
+    </div>
+  </nav>
 
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-intro">
-        <h2>Building autonomous systems for the real world.</h2>
-        <p>
-          I’m an Aerospace Engineering, Computer Science, and Mathematics student at the
-          University of Florida focused on guidance, navigation, and control for autonomous vehicles.
-        </p>
-        <p class="hero-tagline">
-          I like working at the intersection of flight dynamics, control theory, and software.
-        </p>
-      </div>
+    <div class="page-container">
 
-      <aside class="hero-meta">
-        <div class="meta-row">
-          <span class="meta-label">Focus Areas</span>
-          <span>Guidance &amp; navigation · Control systems</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Currently</span>
-          <span>Simulating quadrotor flight (Project Icarus)</span>
-        </div>
-        <div>
-          <span class="meta-label">Tools &amp; Languages</span>
-          <div class="pill-row">
-            <span class="pill">Python</span>
-            <span class="pill">C++</span>
-            <span class="pill">MATLAB</span>
-            <span class="pill">NumPy</span>
-            <span class="pill">Matplotlib</span>
+      <!-- ── Hero ── -->
+      <section class="hero">
+        <div class="hero-left fade-in">
+          <p class="hero-eyebrow">GNC &amp; Flight Software</p>
+          <h1 class="hero-title">Building autonomous systems for aerospace.</h1>
+          <p class="hero-subtitle">
+            I'm an Aerospace Engineering, Computer Science, and Mathematics student at the
+            University of Florida — focused on guidance, navigation, and control for autonomous
+            vehicles. I work at the intersection of flight dynamics, control theory, and software.
+          </p>
+          <div class="hero-actions">
+            <a href="https://github.com/brandonjacobson" class="btn btn-primary" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/b-jacobson" class="btn btn-outline" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="Resume.pdf" class="btn btn-outline" target="_blank" rel="noreferrer">Resume ↓</a>
           </div>
         </div>
-      </aside>
-    </section>
 
-    <!-- About -->
-    <section>
-      <div class="section-title">
-        <h2>About Me</h2>
-      </div>
-      <p>
-        I’m interested in how we can design vehicles that understand their environment well enough
-        to make reliable decisions on their own. A lot of my work revolves around simulating flight
-        dynamics, designing controllers, and writing the software that sits between theory and
-        hardware.
-      </p>
-      <p>
-        I enjoy projects where I can own the pipeline end-to-end: modeling the system,
-        implementing the algorithms, and validating behavior through simulation and testing.
-      </p>
-    </section>
-
-    <!-- Featured Projects -->
-    <section>
-      <div class="section-title">
-        <h2>Featured Projects</h2>
-        <span class="section-subtext">A few things I’m working on.</span>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card">
-          <h3>Project Icarus Flight Simulations</h3>
-          <div class="project-tags">
-            <span class="project-tag">Quadrotor</span>
-            <span class="project-tag">PID Control</span>
-            <span class="project-tag">Python</span>
+        <aside class="status-card fade-in delay-2" aria-label="Quick facts">
+          <div class="status-row">
+            <span class="status-label">Focus Areas</span>
+            <span class="status-value">Guidance &amp; Navigation · Control Systems · Flight Software</span>
           </div>
-          <p>
-            Vertical flight simulations for a quadrotor platform, modeling thrust, sensor noise,
-            and PID altitude control to reach and hold a 10&nbsp;m hover with a soft landing.
-          </p>
-          <a href="icarus_sim.html" class="project-link">View simulations →</a>
-        </article>
-
-        <article class="project-card">
-          <h3>Project Icarus Hardware Platform</h3>
-          <div class="project-tags">
-            <span class="project-tag">Aerospace</span>
-            <span class="project-tag">Embedded</span>
-            <span class="project-tag">Controls</span>
+          <div class="status-row">
+            <span class="status-label">Currently</span>
+            <span class="status-value">Simulating quadrotor flight — Project Icarus</span>
           </div>
-          <p>
-            Designing and assembling a custom quadcopter to serve as a testbed for onboard control,
-            state estimation, and autonomous flight experiments grounded in the simulation work.
-          </p>
-          <a href="icarus.html" class="project-link">View hardware →</a>
-        </article>
-
-        <!--
-        <article class="project-card">
-          <h3>Guidance &amp; Navigation Experiments</h3>
-          <div class="project-tags">
-            <span class="project-tag">Estimation</span>
-            <span class="project-tag">Numerical Methods</span>
-            <span class="project-tag">Simulation</span>
+          <div class="status-row">
+            <span class="status-label">Stack</span>
+            <div class="pill-row" style="margin-top:0.4rem">
+              <span class="pill">Python</span>
+              <span class="pill">C++</span>
+              <span class="pill">MATLAB</span>
+              <span class="pill">NumPy</span>
+              <span class="pill">Matplotlib</span>
+            </div>
           </div>
+        </aside>
+      </section>
+
+      <!-- ── About ── -->
+      <section class="section" id="about">
+        <div class="section-header">
+          <h2 class="section-title">About</h2>
+        </div>
+        <div class="about-body">
           <p>
-            Small-scale experiments exploring trajectory tracking, numerical integration, and the
-            effect of sensor noise on guidance and navigation algorithms in simulation.
+            I'm interested in how we can design vehicles that understand their environment well enough
+            to make reliable decisions on their own. A lot of my work revolves around simulating flight
+            dynamics, designing controllers, and writing the software that sits between theory and hardware.
           </p>
-          <a href="gnc-experiments.html" class="project-link">Explore experiments (coming soon)</a>
-        </article>
-        -->
-      </div>
-    </section>
+          <p>
+            I enjoy projects where I can own the pipeline end-to-end — modeling the system,
+            implementing the algorithms, and validating behavior through simulation and testing.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Featured Projects ── -->
+      <section class="section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <a href="projects.html" class="section-subtitle" style="text-decoration:none;color:var(--accent);font-weight:600">View all →</a>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card fade-in delay-1">
+            <h3 class="project-card-title">Icarus Flight Simulations</h3>
+            <div class="project-card-tags">
+              <span class="tag">Quadrotor</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">Python</span>
+              <span class="tag">NumPy</span>
+            </div>
+            <p class="project-card-desc">
+              Vertical flight simulations for a quadrotor platform — modeling thrust, sensor noise,
+              and PID altitude control to reach and hold a 10&nbsp;m hover with a soft landing profile.
+            </p>
+            <a href="icarus_sim.html" class="project-card-link">View simulations →</a>
+          </article>
+
+          <article class="project-card fade-in delay-2">
+            <h3 class="project-card-title">Icarus Hardware Platform</h3>
+            <div class="project-card-tags">
+              <span class="tag">PX4</span>
+              <span class="tag">Pixhawk</span>
+              <span class="tag">MAVSDK</span>
+              <span class="tag">C++</span>
+            </div>
+            <p class="project-card-desc">
+              Designing and assembling a custom quadcopter as a testbed for onboard control,
+              state estimation, and autonomous flight — grounded in the simulation work above.
+            </p>
+            <a href="icarus.html" class="project-card-link">View hardware →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Resume ── -->
+      <section class="section" id="resume">
+        <div class="cta-box">
+          <div class="cta-box-text">
+            <h3>Resume</h3>
+            <p>Aerospace Engineering · Computer Science · Mathematics — University of Florida</p>
+          </div>
+          <a href="Resume.pdf" class="btn btn-primary" target="_blank" rel="noreferrer">Download Resume ↓</a>
+        </div>
+      </section>
+
+      <!-- ── Contact ── -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <p style="font-size:0.95rem;color:var(--text-muted)">I'm actively looking for aerospace internship opportunities. Feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:brandonjacobson0@gmail.com" class="contact-link">
+            ✉ brandonjacobson0@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/b-jacobson" class="contact-link" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a href="https://github.com/brandonjacobson" class="contact-link" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /.page-container -->
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>© 2025 Brandon Jacobson</p>
-    <p>Contact Me: brandonjacobson0@gmail.com</p>
+    <p><a href="mailto:brandonjacobson0@gmail.com">brandonjacobson0@gmail.com</a></p>
   </footer>
+
 </body>
 </html>

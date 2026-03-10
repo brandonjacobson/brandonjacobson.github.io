@@ -3,208 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Icarus Flight Simulations | Brandon Jacobson</title>
+  <title>Icarus Flight Simulations | Brandon Jacobson</title>
+  <meta name="description" content="Python-based quadrotor vertical flight simulations with PID control, sensor noise, and low-pass filtering." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    main {
-      max-width: 1040px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      color: #0a192f;
-    }
-
-    .project-title {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 2.2rem;
-      color: #0a192f;
-    }
-
-    .project-subtitle {
-      text-align: center;
-      margin: 0.5rem auto 1.5rem;
-      max-width: 640px;
-      color: #4b5563;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .project-meta {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .badge {
-      background: #e5f3ff;
-      color: #0a192f;
-      border-radius: 999px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    section {
-      margin-bottom: 2rem;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 768px) {
-      .two-column {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    ul {
-      padding-left: 1.25rem;
-    }
-
-    ul li {
-      margin-bottom: 0.4rem;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <h1>Brandon Jacobson</h1>
-    <p>Aerospace Engineering | Computer Science | Mathematics @ University of Florida</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="Resume.pdf" target="_blank">Resume</a>
-      <a href="https://github.com/brandonjacobson" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/b-jacobson" target="_blank">LinkedIn</a>
-    </nav>
-  </header>
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Brandon Jacobson</a>
+
+      <button class="nav-toggle-btn" aria-label="Toggle menu" onclick="
+        document.querySelector('.nav-links').classList.toggle('open')
+      ">☰</button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-desktop">Home</a>
+        <a href="projects.html" class="nav-desktop">Projects</a>
+        <a href="https://github.com/brandonjacobson" target="_blank" rel="noreferrer" class="nav-desktop">GitHub</a>
+        <a href="https://www.linkedin.com/in/b-jacobson" target="_blank" rel="noreferrer" class="nav-desktop">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer" class="nav-resume">Resume</a>
+      </div>
+    </div>
+  </nav>
 
   <main>
-    <!-- Hero -->
-    <h1 class="project-title">Project Icarus Flight Simulations</h1>
-    <p class="project-subtitle">
-      Python-based vertical flight simulations for a quadrotor platform, modeling thrust, sensor noise,
-      and PID control to achieve a stable 10&nbsp;m hover and soft landing profile.
-    </p>
+    <div class="page-container">
 
-    <div class="project-meta">
-      <span class="badge">Python · NumPy · Matplotlib</span>
-      <span class="badge">Quadrotor Vertical Dynamics</span>
-      <span class="badge">PID Control</span>
-      <span class="badge">Noise + Filtering</span>
-    </div>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="projects.html">Projects</a>
+        <span>/</span>
+        <span>Icarus Simulations</span>
+      </div>
 
-    <!-- Overview + Highlights -->
-    <section class="two-column">
-      <div>
-        <h2>Overview</h2>
-        <p>
-          This simulation work focuses on the vertical flight dynamics and control algorithms for
-          Project Icarus, a quadrotor platform. The current emphasis is on modeling thrust, adding
-          realistic sensor noise, and tuning PID control to create a smooth three-phase flight:
-          takeoff, 10&nbsp;m hover, and soft landing.
+      <!-- Hero -->
+      <div class="project-page-hero">
+        <h1 class="project-page-title">Project Icarus Flight Simulations</h1>
+        <p class="project-page-subtitle">
+          Python-based vertical flight simulations for a quadrotor platform — modeling thrust,
+          sensor noise, and PID control to achieve a stable 10&nbsp;m hover and soft landing.
         </p>
+        <div class="badge-row">
+          <span class="badge">Python · NumPy · Matplotlib</span>
+          <span class="badge">Quadrotor Vertical Dynamics</span>
+          <span class="badge">PID Control</span>
+          <span class="badge">Noise + Filtering</span>
+        </div>
       </div>
 
-      <div>
-        <h2>Key Highlights</h2>
+      <!-- Overview + Key Highlights -->
+      <div class="two-column project-section">
+        <div>
+          <h2>Overview</h2>
+          <p>
+            This simulation work focuses on the vertical flight dynamics and control algorithms for
+            Project Icarus. The current emphasis is on modeling thrust, adding realistic sensor noise,
+            and tuning PID control to create a smooth three-phase flight: takeoff, 10&nbsp;m hover,
+            and soft landing.
+          </p>
+        </div>
+        <div>
+          <h2>Key Highlights</h2>
+          <ul>
+            <li>Implemented vertical thrust simulations with autonomous altitude tracking.</li>
+            <li>Modeled noisy thrust and RPM measurements and evaluated controller robustness.</li>
+            <li>Applied low-pass filtering to stabilize control inputs under measurement noise.</li>
+            <li>Designed a three-phase profile: ground → 10&nbsp;m hover → soft touchdown.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Simulation Gallery -->
+      <div class="project-section">
+        <h2>Simulation Gallery</h2>
+        <p>
+          Selected plots from the current simulation pipeline — baseline hover response,
+          noisy PID behavior, and the effect of low-pass filtering on thrust commands.
+        </p>
+
+        <div class="gallery">
+          <figure class="media-card">
+            <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Baseline autonomous 10 m hover simulation plot" />
+            <figcaption>Baseline autonomous 10&nbsp;m hover test in Python.</figcaption>
+          </figure>
+
+          <figure class="media-card">
+            <img src="images/NoisyTest1.png" alt="Noisy thrust response under PID control" />
+            <img src="images/NoisyTest1_RPM.png" alt="Noisy RPM response under PID control" />
+            <figcaption>Noisy thrust and RPM response under PID control during 10&nbsp;m hover.</figcaption>
+          </figure>
+
+          <figure class="media-card">
+            <img src="images/LowPassTest1.png" alt="Low-pass filtered thrust signal" />
+            <figcaption>Low-pass filtered thrust signal showing smoother control action despite noise.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Results + Next Steps -->
+      <div class="two-column project-section">
+        <div>
+          <h2>Results So Far</h2>
+          <ul>
+            <li>Successful simulation of a simple three-phase vertical flight profile.</li>
+            <li>PID controller tuned to track a 10&nbsp;m altitude target in the presence of noise.</li>
+            <li>Demonstrated reduction in thrust oscillations after applying low-pass filtering.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Next Steps</h2>
+          <ul>
+            <li>Refine PID gains to minimize overshoot and settling time at 10&nbsp;m.</li>
+            <li>Extend the model to include lateral motion and more realistic actuator limits.</li>
+            <li>Deploy and validate the three-phase profile on the physical Icarus platform.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Technical Focus -->
+      <div class="project-section">
+        <h2>Technical Focus</h2>
         <ul>
-          <li>Implemented vertical thrust simulations with autonomous altitude tracking.</li>
-          <li>Modeled noisy thrust and RPM measurements and evaluated controller robustness.</li>
-          <li>Applied low-pass filtering to stabilize control inputs under measurement noise.</li>
-          <li>Designed a three-phase profile: ground → 10&nbsp;m hover → soft touchdown.</li>
+          <li><strong>Language &amp; Tools:</strong> Python, NumPy, Matplotlib.</li>
+          <li><strong>Control:</strong> PID altitude control with noise-robust tuning.</li>
+          <li><strong>Modeling:</strong> Vertical thrust dynamics and noisy sensor measurements.</li>
+          <li><strong>Signal Processing:</strong> Low-pass filtering for smoother control inputs.</li>
         </ul>
       </div>
-    </section>
 
-    <!-- Gallery -->
-    <section>
-      <h2>Simulation Gallery</h2>
-      <p>
-        Selected plots from the current simulation pipeline, including baseline hover response,
-        noisy PID behavior, and the effect of low-pass filtering on thrust commands.
-      </p>
-
-      <div class="gallery">
-        <figure class="media-card">
-          <img src="images/Vertical_Thrust_Test1_Plot.png" alt="Hover Simulation" />
-          <figcaption>Baseline autonomous 10&nbsp;m hover test in Python.</figcaption>
-        </figure>
-        
-        <figure class="media-card">
-          <img src="images/NoisyTest1.png" alt="Noisy Thrust Plot with PID for 10m Hover" />
-          <img src="images/NoisyTest1_RPM.png" alt="Noisy RPM Plot with PID for 10m Hover" />
-          <figcaption>
-            Noisy thrust and RPM response under PID control during 10&nbsp;m hover.
-          </figcaption>
-        </figure>
-
-        <figure class="media-card">
-          <img src="images/LowPassTest1.png" alt="Low-Pass Filtered Noisy Thrust Plot with PID for 10m Hover" />
-          <figcaption>
-            Low-pass filtered thrust signal showing smoother control action despite noise.
-          </figcaption>
-        </figure>
-
-        <!-- Optional video later
-        <figure class="media-card">
-          <video controls>
-            <source src="videos/sim_flight.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <figcaption>Full simulated flight demonstrating takeoff, hover, and landing.</figcaption>
-        </figure>
-        -->
-      </div>
-    </section>
-
-    <!-- Results + Next Steps -->
-    <section class="two-column">
-      <div>
-        <h2>Results So Far</h2>
-        <ul>
-          <li>Successful simulation of a simple three-phase vertical flight profile.</li>
-          <li>PID controller tuned to track a 10&nbsp;m altitude target in the presence of noise.</li>
-          <li>Demonstrated reduction in thrust oscillations after applying low-pass filtering.</li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Next Steps</h2>
-        <ul>
-          <li>Refine PID gains to minimize overshoot and settling time at 10&nbsp;m.</li>
-          <li>Extend the model to include lateral motion and more realistic actuator limits.</li>
-          <li>Deploy and validate the three-phase profile on the physical Icarus platform.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Technical stack / focus -->
-    <section>
-      <h2>Technical Focus</h2>
-      <ul>
-        <li><strong>Language & Tools:</strong> Python, NumPy, Matplotlib.</li>
-        <li><strong>Control:</strong> PID altitude control with noise-robust tuning.</li>
-        <li><strong>Modeling:</strong> Vertical thrust dynamics and noisy sensor measurements.</li>
-        <li><strong>Signal Processing:</strong> Low-pass filtering for smoother control inputs.</li>
-      </ul>
-    </section>
+    </div><!-- /.page-container -->
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>© 2025 Brandon Jacobson</p>
-    <p>Contact Me: brandonjacobson0@gmail.com</p>
+    <p><a href="mailto:brandonjacobson0@gmail.com">brandonjacobson0@gmail.com</a></p>
   </footer>
+
 </body>
 </html>

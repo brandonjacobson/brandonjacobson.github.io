@@ -4,95 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Icarus | Brandon Jacobson</title>
+  <meta name="description" content="Custom quadcopter hardware platform for studying flight control, state estimation, and autonomous flight." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      margin-top: 1.5rem;
-      color: #0a192f;
-    }
-    .project-title {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 2rem;
-      color: #0a192f;
-    }
-  </style>
 </head>
 <body>
-  <!-- Keep your consistent site header -->
-  <header>
-    <h1>Brandon Jacobson</h1>
-    <p>Aerospace Engineering | Computer Science | Mathematics @ University of Florida</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="Resume.pdf" target="_blank">Resume</a>
-      <a href="https://github.com/brandonjacobson" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/b-jacobson" target="_blank">LinkedIn</a>
-    </nav>
-  </header>
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Brandon Jacobson</a>
+
+      <button class="nav-toggle-btn" aria-label="Toggle menu" onclick="
+        document.querySelector('.nav-links').classList.toggle('open')
+      ">☰</button>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-desktop">Home</a>
+        <a href="projects.html" class="nav-desktop">Projects</a>
+        <a href="https://github.com/brandonjacobson" target="_blank" rel="noreferrer" class="nav-desktop">GitHub</a>
+        <a href="https://www.linkedin.com/in/b-jacobson" target="_blank" rel="noreferrer" class="nav-desktop">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer" class="nav-resume">Resume</a>
+      </div>
+    </div>
+  </nav>
 
   <main>
-    <!-- Smaller title under top bar -->
-    <h1 class="project-title">Project Icarus</h1>
+    <div class="page-container">
 
-    <section>
-      <h2>Overview</h2>
-      <p>
-        Project Icarus is a custom-built quadcopter designed to explore flight dynamics, control theory, and onboard automation. 
-        The drone integrates a Pixhawk flight controller running PX4, custom power distribution, and telemetry logging through MAVSDK. 
-        It serves as a hands-on platform for testing real-time control algorithms, state estimation, and autonomous flight modes.
-      </p>
-    </section>
-
-    <section>
-      <h2>Media Gallery</h2>
-      <div class="gallery">
-        <figure class="media-card">
-        <img src="images/icarus_build.jpg" alt="Icarus drone build" />
-        <figcaption>Current Hardware State</figcaption>  
-        </figure>
-        <figure class="media-card">
-        <video controls>
-          <source src="images/icarus_test.mp4" type="video/mp4" />
-        </video>
-          <figcaption>Successful 4-Motor Test</figcaption>
-        </figure>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="projects.html">Projects</a>
+        <span>/</span>
+        <span>Project Icarus</span>
       </div>
-    </section>
 
-    <section>
-      <h2>Current Progress</h2>
-      <p>
-        Currently working on finding a new functional Flight Controller to pair with the Raspberry Pi 4B. The previous flight controller had issues with its RAM chip,
-        not storing parameters for flight correctly on power cycle. 
-      </p>
-    </section>
+      <!-- Hero -->
+      <div class="project-page-hero">
+        <h1 class="project-page-title">Project Icarus</h1>
+        <p class="project-page-subtitle">
+          A custom-built quadcopter designed to explore flight dynamics, control theory,
+          and onboard automation — serving as a real-world testbed for simulation-validated algorithms.
+        </p>
+        <div class="badge-row">
+          <span class="badge">PX4 · Pixhawk</span>
+          <span class="badge">MAVSDK (Python / C++)</span>
+          <span class="badge">PID Control</span>
+          <span class="badge">Kalman Filter</span>
+        </div>
+      </div>
 
-    <section>
-      <h2>Upcoming Goals</h2>
-      <p>
-        Integrate Raspberry Pi with Flight Controller. Fly first manual radio test flight to confirm hardware and assembly.
-      </p>
-      
-    <section>
-      <h2>Technical Details</h2>
-      <ul>
-        <li><strong>Flight Controller(Previous):</strong> Pixhawk running PX4 firmware</li>
-        <li><strong>Programming:</strong> MAVSDK (Python/C++), PID and Kalman filter implementation coming soon</li>
-        <li><strong>Hardware:</strong> Custom frame, 35A individual ESCs, FS-IA6B/FlySky FS-i6 radio, 2300mAh 4S 75C LiPo battery, onboard sensors</li>
-      </ul>
-    </section>
+      <!-- Overview -->
+      <div class="project-section">
+        <h2>Overview</h2>
+        <p>
+          Project Icarus is a custom-built quadcopter designed to explore flight dynamics, control
+          theory, and onboard automation. The drone integrates a Pixhawk flight controller running
+          PX4, custom power distribution, and telemetry logging through MAVSDK. It serves as a
+          hands-on platform for testing real-time control algorithms, state estimation, and
+          autonomous flight modes.
+        </p>
+      </div>
+
+      <!-- Media Gallery -->
+      <div class="project-section">
+        <h2>Media Gallery</h2>
+        <div class="gallery">
+          <figure class="media-card">
+            <img src="images/icarus_build.jpg" alt="Project Icarus quadcopter hardware build" />
+            <figcaption>Current hardware state.</figcaption>
+          </figure>
+          <figure class="media-card">
+            <video controls>
+              <source src="images/icarus_test.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <figcaption>Successful 4-motor bench test.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Progress + Goals -->
+      <div class="two-column project-section">
+        <div>
+          <h2>Current Progress</h2>
+          <p>
+            Currently sourcing a new functional flight controller to pair with the Raspberry Pi 4B.
+            The previous flight controller had issues with its RAM chip — failing to store parameters
+            correctly across power cycles.
+          </p>
+        </div>
+        <div>
+          <h2>Upcoming Goals</h2>
+          <p>
+            Integrate the Raspberry Pi with the new flight controller. Complete the first manual
+            radio test flight to confirm hardware assembly and ESC calibration.
+          </p>
+        </div>
+      </div>
+
+      <!-- Technical Details -->
+      <div class="project-section">
+        <h2>Technical Details</h2>
+        <ul>
+          <li><strong>Flight Controller (Previous):</strong> Pixhawk running PX4 firmware</li>
+          <li><strong>Companion Computer:</strong> Raspberry Pi 4B</li>
+          <li><strong>Programming:</strong> MAVSDK (Python/C++), PID and Kalman filter implementation in progress</li>
+          <li><strong>Hardware:</strong> Custom frame, 35A individual ESCs, FS-IA6B / FlySky FS-i6 radio, 2300&nbsp;mAh 4S 75C LiPo battery, onboard sensors</li>
+        </ul>
+      </div>
+
+    </div><!-- /.page-container -->
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>© 2025 Brandon Jacobson</p>
-    <p>Contact Me: brandonjacobson0@gmail.com</p>
+    <p><a href="mailto:brandonjacobson0@gmail.com">brandonjacobson0@gmail.com</a></p>
   </footer>
+
 </body>
 </html>
