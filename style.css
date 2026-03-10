@@ -13,7 +13,7 @@
   --surface:       #ffffff;
   --surface-alt:   #f1f5f9;
   --text:          #0f172a;
-  --text-muted:    #64748b;
+  --text-muted:    #374151;
   --accent:        #1d4ed8;
   --accent-hover:  #1e40af;
   --accent-subtle: #eff6ff;
@@ -839,6 +839,57 @@ li { margin-bottom: 0.4rem; }
   gap: var(--sp-2);
   margin-top: auto;
   padding-top: var(--sp-2);
+}
+
+/* ================================================
+   Simulation Section Blocks
+   ================================================ */
+.sim-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  margin-bottom: var(--sp-6);
+}
+
+.sim-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.sim-block-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.sim-block-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sim-block-label.label-muted {
+  color: var(--text-muted);
+  background: var(--surface-alt);
+}
+
+@media (max-width: 480px) {
+  .sim-block { padding: var(--sp-5); }
 }
 
 /* ================================================
