@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Nova Invoice, Brandon Jacobson</title>
+  <meta name="description" content="Nova Invoice, a non-custodial B2B invoicing platform for crypto payments, founded and built by Brandon Jacobson.">
+  <meta name="theme-color" content="#0F1A15">
+  <link rel="canonical" href="https://brandonjacobson.github.io/new/projects/nova-invoice/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Brandon Jacobson">
+  <meta property="og:title" content="Nova Invoice">
+  <meta property="og:description" content="A non-custodial B2B invoicing platform for crypto payments.">
+  <meta property="og:url" content="https://brandonjacobson.github.io/new/projects/nova-invoice/">
+  <meta property="og:image" content="https://brandonjacobson.github.io/new/assets/img/olympic.jpg">
+  <meta property="og:image:alt" content="Brandon Jacobson standing on a rock in a creek in Olympic National Park.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/new/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/new/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts load without blocking first paint. The noscript copy covers no-JS visitors. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/new/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="/new/">B. Jacobson</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/new/#work">Work</a></li>
+          <li><a href="/new/#now">Now</a></li>
+          <li><a href="/new/Resume.pdf">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-top">
+      <div class="wrap">
+        <a class="back-link" href="/new/#work">← Work</a>
+        <h1>Nova Invoice</h1>
+        <p class="project-lead">A non-custodial B2B invoicing platform for crypto payments.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Founder, sole engineer</dd></div>
+          <div><dt>When</dt><dd>TODO</dd></div>
+          <div><dt>Stack</dt><dd>TODO</dd></div>
+          <div><dt>Outcome</dt><dd>SwampHacks XI, MLH Best Use of Solana</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- TODO: lead image (16:9). No file listed for this page yet. -->
+
+    <article class="section paper">
+      <div class="wrap">
+        <div class="prose">
+          <h2>Overview</h2>
+          <p>Nova Invoice started as a SwampHacks XI hackathon project. It won MLH Best Use of Solana. I turned it into a company, Nova Invoice LLC.</p>
+          <p>Businesses send invoices and get paid in crypto. The platform is non-custodial, so it never holds funds. It's live at <a href="https://novafinancial.xyz">novafinancial.xyz</a>.</p>
+
+          <h2>Approach</h2>
+          <p>Payments are live in SOL, ETH, USDT and USDC. Subscriptions run on Stripe billing with three tiers. The codebase has an automated suite of 348 tests.</p>
+
+          <h2>Results</h2>
+          <div class="stats">
+            <p class="stat"><span class="stat-num">4</span><span class="stat-label">Cryptocurrencies live</span></p>
+            <p class="stat"><span class="stat-num">348</span><span class="stat-label">Automated tests</span></p>
+            <p class="stat"><span class="stat-num">30M → 0</span><span class="stat-label">Monthly Redis ops removed by the queue rewrite</span></p>
+          </div>
+
+          <h2>What didn't work</h2>
+          <p>Background jobs ran on BullMQ. They drove about 30M Redis operations a month against a cap of 500k. I replaced every queue-based job with interval sweeps, then removed BullMQ and ioredis entirely.</p>
+          <p>I also fixed a Safari bug that wiped auth tokens. During a full mobile responsiveness pass, I fixed an iOS Safari SVG rendering bug.</p>
+
+          <h2>Next</h2>
+          <p class="todo">TODO: ask Brandon.</p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="project-nav paper" aria-label="Projects">
+      <div class="wrap">
+        <a class="prev" href="/new/projects/airbrake/"><small>Previous</small><span>Airbrake mechanism</span></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="wrap">
+      <h2 class="visually-hidden">Contact</h2>
+      <a class="footer-email" href="mailto:brandonjacobson0@gmail.com">brandonjacobson0<wbr>@gmail.com</a>
+      <div class="footer-meta">
+        <p>Gainesville, Florida</p>
+        <ul class="footer-links">
+          <li><a href="https://github.com/brandonjacobson">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/b-jacobson">LinkedIn</a></li>
+          <li><a href="/new/Resume.pdf">Resume</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

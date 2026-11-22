@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Project Icarus, Brandon Jacobson</title>
+  <meta name="description" content="A quadrotor built from parts, with a 6-DoF Python simulation, Kalman filter, LQR and PID control, and a C++ controller port.">
+  <meta name="theme-color" content="#0F1A15">
+  <link rel="canonical" href="https://brandonjacobson.github.io/new/projects/icarus/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Brandon Jacobson">
+  <meta property="og:title" content="Project Icarus">
+  <meta property="og:description" content="A quadrotor I built from parts, and the simulation and control software to fly it.">
+  <meta property="og:url" content="https://brandonjacobson.github.io/new/projects/icarus/">
+  <meta property="og:image" content="https://brandonjacobson.github.io/new/assets/img/olympic.jpg">
+  <meta property="og:image:alt" content="Brandon Jacobson standing on a rock in a creek in Olympic National Park.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/new/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/new/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts load without blocking first paint. The noscript copy covers no-JS visitors. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Inter+Tight:wght@400;500&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/new/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="/new/">B. Jacobson</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/new/#work">Work</a></li>
+          <li><a href="/new/#now">Now</a></li>
+          <li><a href="/new/Resume.pdf">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-top">
+      <div class="wrap">
+        <a class="back-link" href="/new/#work">← Work</a>
+        <h1>Project Icarus</h1>
+        <p class="project-lead">A quadrotor I built from parts, and the simulation and control software to fly it.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Solo project</dd></div>
+          <div><dt>When</dt><dd>TODO</dd></div>
+          <div><dt>Tools</dt><dd>Python, C++, Eigen, PX4, MAVLink</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- TODO: lead image (16:9). Add assets/img/icarus-quad.jpg, run scripts/optimize_images.py,
+         then add this section back:
+    <figure class="lead-image">
+      <picture>
+        <source srcset="/new/assets/img/icarus-quad.webp" type="image/webp">
+        <img src="/new/assets/img/icarus-quad.jpg" width="1600" height="900" alt="TODO: describe the photo">
+      </picture>
+    </figure>
+    -->
+
+    <article class="section paper">
+      <div class="wrap">
+        <div class="prose">
+          <h2>Overview</h2>
+          <p>Project Icarus is a quadrotor I built from individually sourced parts. Alongside it I wrote a 6&#8209;DoF quadrotor simulation in Python. I'm now porting the controller to C++.</p>
+
+          <h2>Approach</h2>
+          <h3>Simulation</h3>
+          <p>The Python simulation models the quadrotor in six degrees of freedom. It runs cascaded PID control and a complementary filter for attitude. A linear Kalman filter estimates position and velocity from noisy GPS.</p>
+
+          <h3>LQR benchmark</h3>
+          <p>To benchmark the PID loops I added a full-state LQR controller, linearized about hover. The control law is:</p>
+          <p class="equation" role="math" aria-label="u equals u trim minus K times the quantity x minus x ref">u = u<sub>trim</sub> − K (x − x<sub>ref</sub>)</p>
+          <p>The input u is the wrench [T, τ<sub>x</sub>, τ<sub>y</sub>, τ<sub>z</sub>]. K is a 4 × 12 gain matrix. The 12 states, in order, are [x, y, z, v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>, φ, θ, ψ, p, q, r]. A mixer turns the wrench into motor commands.</p>
+
+          <h3>C++ port</h3>
+          <p>The C++ plant is written with Eigen and represents attitude as a quaternion. Three tests verify it: free fall, hover, and a 90° yaw turn. All three pass. The LQR gain is exported from the Python sim to a CSV, and the C++ controller loads it.</p>
+
+          <h3>Hardware</h3>
+          <p>I sourced the airframe parts individually: 2212 980KV motors, BLHeli_S ESCs and a CUAV V5 Nano flight controller. MAVProxy confirmed a heartbeat over UART at 921600 baud. A props-off arm test passed with all four motors spinning in the correct direction. The quad is registered with the FAA.</p>
+
+          <figure class="figure">
+            <picture>
+              <source srcset="/new/assets/img/icarus-quad.webp" type="image/webp">
+              <img src="/new/assets/img/icarus-quad.jpg" width="1600" height="1080" loading="lazy" decoding="async"
+                   alt="The Icarus quadrotor on a desk beside its radio transmitter.">
+            </picture>
+            <figcaption><b>Figure 1.</b> TODO: caption for the quad photo.</figcaption>
+          </figure>
+
+          <h2>Results</h2>
+          <div class="stats">
+            <p class="stat"><span class="stat-num">~32%</span><span class="stat-label">Faster mission time, LQR vs. PID, in sim</span></p>
+            <p class="stat"><span class="stat-num">12</span><span class="stat-label">States in the LQR model</span></p>
+            <p class="stat"><span class="stat-num">3 / 3</span><span class="stat-label">C++ plant verification tests passing</span></p>
+          </div>
+          <p>In simulation, LQR completed the waypoint mission about 32% faster than PID.</p>
+
+          <!-- TODO: Figure 2, position error vs. time, PID vs. LQR. Expected file: assets/img/icarus-plot.png
+               Use scripts/plot_style.mplstyle so the plot matches the site. -->
+          <figure class="figure">
+            <div class="figure-todo">TODO: position error vs. time, PID vs. LQR</div>
+            <figcaption><b>Figure 2.</b> Position error over time for PID and LQR in simulation.</figcaption>
+          </figure>
+
+          <h2>What didn't work</h2>
+          <p>The PID and LQR runs used different noise seeds. Until I rerun both on the same seed, the 32% is indicative, not final.</p>
+          <p>RK4 integration isn't in the C++ plant yet.</p>
+
+          <h2>Next</h2>
+          <ul>
+            <li>Finish the C++ controller and Kalman filter, then close the loop on hover-hold in simulation.</li>
+            <li>Wrap it in a ROS 2 node and fly it in Gazebo.</li>
+            <li>Run it on a companion computer that sends setpoints to PX4 over MAVLink, with PX4 keeping the inner loop.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <nav class="project-nav paper" aria-label="Projects">
+      <div class="wrap">
+        <a class="next" href="/new/projects/airbrake/"><small>Next</small><span>Airbrake mechanism</span></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="wrap">
+      <h2 class="visually-hidden">Contact</h2>
+      <a class="footer-email" href="mailto:brandonjacobson0@gmail.com">brandonjacobson0<wbr>@gmail.com</a>
+      <div class="footer-meta">
+        <p>Gainesville, Florida</p>
+        <ul class="footer-links">
+          <li><a href="https://github.com/brandonjacobson">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/b-jacobson">LinkedIn</a></li>
+          <li><a href="/new/Resume.pdf">Resume</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
